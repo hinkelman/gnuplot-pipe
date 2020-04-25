@@ -100,7 +100,7 @@
     (end-data))
 
   (define (plot-dataset data who)
-    (map (lambda (x) (plot-dataset-single x who)) data))
+    (for-each (lambda (x) (plot-dataset-single x who)) data))
 
   ;; Plot using cmdline the list of descriptions and wait for data input.
   (define (newplot cmdline description)
