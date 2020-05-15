@@ -1,0 +1,9 @@
+#!r6rs ; -*- mode: scheme; coding: utf-8 -*-
+(import (akku format manifest))
+
+(akku-package ("gnuplot-pipe" "0.4.0")
+  (synopsis "Port of gnuplot-pipe egg for Chicken Scheme to Chez Scheme.")
+  (authors "Travis Hinkelman" "Francesco Montanari" "Glenn Moloney")
+  (license "GPL-3.0-or-later")
+  (depends ("chez-srfi" ">=0.0.0-akku <1.0.0"))
+)

@@ -1,5 +1,11 @@
-(import (prefix (gnuplot-pipe plot) gp:)
-        (srfi s64 testing))
+#!/usr/bin/env scheme-script
+;; -*- mode: scheme; coding: utf-8 -*- !#
+;; SPDX-License-Identifier: GPL-3.0-or-later
+#!r6rs
+
+(import (rnrs (6))
+        (srfi :64 testing)
+        (prefix (gnuplot-pipe) gp:))
 
 ;;; macro included in the chicken version of this file wasn't working
 ;;; because the test to check if the files existed was happening before the files were written

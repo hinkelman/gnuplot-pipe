@@ -8,19 +8,14 @@ Port of [gnuplot-pipe](https://gitlab.com/montanari/gnuplot-pipe/) [egg](http://
 
 ## Installation
 
-```
-$ cd ~/scheme # where '~/scheme' is the path to your Chez Scheme libraries
-$ git clone git://github.com/hinkelman/gnuplot-pipe.git
-```
-
-For more information on installing Chez Scheme libraries, see blog posts for [macOS and Windows](https://www.travishinkelman.com/post/getting-started-with-chez-scheme-and-emacs/) or [Ubuntu](https://www.travishinkelman.com/post/getting-started-with-chez-scheme-and-emacs-ubuntu/).
+Download or clone this repository. Move `gnuplot-pipe.sls` to a directory found by `(library-directories)`. For more information on how Chez Scheme finds libraries, see blog posts for [macOS and Windows](https://www.travishinkelman.com/post/getting-started-with-chez-scheme-and-emacs/) or [Ubuntu](https://www.travishinkelman.com/post/getting-started-with-chez-scheme-and-emacs-ubuntu/).
 
 ## Usage and examples
 
 It is recommended to import `gnuplot-pipe` using a prefix, for example `gp:`.
 
 ```
-(import (prefix (gnuplot-pipe plot) gp:))
+(import (prefix (gnuplot-pipe) gp:))
 ```
 
 All `gnuplot-pipe` procedures calls must be wrapped by

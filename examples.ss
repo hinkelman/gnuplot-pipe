@@ -1,4 +1,4 @@
-(import (prefix (gnuplot-pipe plot) gp:))
+(import (prefix (gnuplot-pipe) gp:))
 
 ;;; Plot function
 (gp:call/gnuplot

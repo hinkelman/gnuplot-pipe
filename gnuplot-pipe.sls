@@ -1,4 +1,4 @@
-(library (gnuplot-pipe plot)
+(library (gnuplot-pipe)
   (export
    call/gnuplot
    send
@@ -8,8 +8,8 @@
    end-data)
 
   (import (chezscheme)
-          (only (srfi s13 strings) string-join)
-          (only (srfi s1 lists) fold))
+          (only (srfi :13 strings) string-join)
+          (only (srfi :1 lists) fold))
 
   ;;---------------------------------------------------------------------
 
