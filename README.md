@@ -8,7 +8,17 @@ Port of [gnuplot-pipe](https://gitlab.com/montanari/gnuplot-pipe/) [egg](http://
 
 ## Installation
 
-Download or clone this repository. Move `gnuplot-pipe.sls` to a directory found by `(library-directories)`. For more information on how Chez Scheme finds libraries, see blog posts for [macOS and Windows](https://www.travishinkelman.com/post/getting-started-with-chez-scheme-and-emacs/) or [Ubuntu](https://www.travishinkelman.com/post/getting-started-with-chez-scheme-and-emacs-ubuntu/).
+### Akku
+
+```
+$ akku install gnuplot-pipe
+```
+
+For more information on getting started with [Akku](https://akkuscm.org/), see this [blog post](https://www.travishinkelman.com/posts/getting-started-with-akku-package-manager-for-scheme/).
+
+### Manual
+
+Clone or download this repository. Move `gnuplot-pipe.sls` to a directory found by `(library-directories)`. For more information on how Chez Scheme finds libraries, see blog posts for [macOS and Windows](https://www.travishinkelman.com/post/getting-started-with-chez-scheme-and-emacs/) or [Ubuntu](https://www.travishinkelman.com/post/getting-started-with-chez-scheme-and-emacs-ubuntu/).
 
 ## Usage and examples
 
