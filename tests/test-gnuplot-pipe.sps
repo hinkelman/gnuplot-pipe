@@ -4,12 +4,9 @@
 #!r6rs
 
 (import (rnrs (6))
+        (only (chezscheme) iota)
         (srfi :64 testing)
         (prefix (gnuplot-pipe) gp:))
-
-;;; macro included in the chicken version of this file wasn't working
-;;; because the test to check if the files existed was happening before the files were written
-;;; added a sleep timer to give the files a chance to be written before the tests are run
 
 ;;; Plot function.
 (gp:call/gnuplot
@@ -85,16 +82,12 @@
 (gp:call/gnuplot
  (gp:plot "matrix with image"
           '(5 2 0 0) '(4 2 0 1) '(3 0 0 2) '(1 0 1 4) '(0 1 0 3))
- (gp:end-data)
  (gp:save "plot10.png"))
-
-;;; need to give time for files to be written before checking for existence of files
-(sleep (make-time 'time-duration 0 5))
 
 (test-begin "gnuplot-test")
 
 (define filenames
-  (map (lambda (x) (string-append "plot" (number->string (add1 x)) ".png")) (iota 10)))
+  (map (lambda (x) (string-append "plot" (number->string (+ x 1)) ".png")) (iota 10)))
 
 (for-each (lambda (x) (test-assert (file-exists? x))) filenames)
 

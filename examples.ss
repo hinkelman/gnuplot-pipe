@@ -49,5 +49,7 @@
 (gp:call/gnuplot
  (gp:plot "matrix with image"
           '(5 2 0 0) '(4 2 0 1) '(3 0 0 2) '(1 0 1 4) '(0 1 0 3))
+ ;; Send end signal a second time; only needed for older versions of
+ ;; Gnuplot (e.g., 5.2). Gnuplot 6 reports it as an invalid command.
  (gp:end-data))
 

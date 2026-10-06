@@ -68,9 +68,13 @@
   ;; Internal procedures.
 
   ;; (with-output-to-pipe) contributed by oaktownsam on Scheme discord server
+  ;; Gnuplot's stderr is merged into stdout and drained until gnuplot exits.
+  ;; Closing the read end early makes gnuplot (or gnuplot_qt, which inherits
+  ;; the pipe) die from SIGPIPE on its first diagnostic message, e.g., the
+  ;; qt font warning on macOS, before any plot is drawn or saved.
   (define (with-output-to-pipe cmdline thunk)
-    (define-values (to-cmd from-cmd from-cmd-err cmd-pid) 
-      (open-process-ports cmdline 'line (native-transcoder)))
+    (define-values (to-cmd from-cmd from-cmd-err cmd-pid)
+      (open-process-ports (string-append cmdline " 2>&1") 'line (native-transcoder)))
     (dynamic-wind
       void
       (lambda ()
@@ -78,6 +82,9 @@
           (thunk)))
       (lambda ()
         (close-output-port to-cmd)
+        (let ([output (get-string-all from-cmd)])
+          (unless (eof-object? output)
+            (display output (current-error-port))))
         (close-input-port from-cmd)
         (close-input-port from-cmd-err))))
 

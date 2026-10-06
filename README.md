@@ -117,7 +117,7 @@ It is easily translated as follows.
           '(0 30 70 120 230) '(30 70 120 230 360) '(1 2 3 4 5)))
 ```
 
-For more involved plots, additional specifications may be required. Consider the following Gnuplot script with inline data where we need to specify the data end `e` twice:
+For more involved plots, additional specifications may be required. Consider the following Gnuplot script with inline matrix data, where older versions of Gnuplot (e.g., 5.2) need the data end `e` twice:
 
 ```
 plot ’-’ matrix with image
@@ -129,13 +129,13 @@ e
 e
 ```
 
-When drawing the same image with `gp:plot` we need to declare the second data end signal manually:
+When drawing the same image with `gp:plot`, the second data end signal must be sent manually with `gp:end-data` on older versions of Gnuplot. Gnuplot 6 expects a single `e` and reports `invalid command` for the second one, so omit `gp:end-data` there:
 
 ```
 (gp:call/gnuplot
  (gp:plot "matrix with image"
           '(5 2 0 0) '(4 2 0 1) '(3 0 0 2) '(1 0 1 4) '(0 1 0 3))
- (gp:end-data)) ; Send end signal a second time manually.
+ (gp:end-data)) ; Only needed for older versions of Gnuplot (e.g., 5.2).
 ```
 
 ## API
